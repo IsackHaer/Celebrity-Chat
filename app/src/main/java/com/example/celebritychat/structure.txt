@@ -1,0 +1,21 @@
+enable fragment & dataBinding -> GitHub gists
+create nav_graph
+create/design screens: fragment_home, fragment_chat -> editText, send button, recyclerview
+create/design part for recyclerView: contact_item -> (imageview, textview, textview)
+                                     message_item -> (textview)
+
+create package: data -> Repository()
+                create package: model -> Contact(name: String, image: Int, chat: MutableList<String>)
+
+create package: ui -> create class: HomeFragment(), ChatFragment()
+
+create package: adapter -> ContactAdapter(), MessageAdapter()
+
+create ViewModel: import Repository()
+
+
+
+//TODO recycler view messages are at the top, needs to be moved to the bottom
+//TODO last message needs to appear in the contact list
+//TODO send button should change color depending on if there is text or not in the textEdit
+//TODO make the celebrities answer back

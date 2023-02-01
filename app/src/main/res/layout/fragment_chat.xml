@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/chat_message_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/chat_send_btn"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/chat_message_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="write your message here" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/chat_send_btn"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@+id/chat_message_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/chat_message_layout"
+            app:srcCompat="@drawable/round_send_24" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chat_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/chat_message_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chat_actionbar"
+            tools:listitem="@layout/message_me_item" />
+
+        <TextView
+            android:id="@+id/chat_actionbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/bebas_neue"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="name of celebrity" />
+
+        <ImageView
+            android:id="@+id/chat_back_btn"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@+id/chat_actionbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/chat_actionbar"
+            app:srcCompat="@drawable/round_arrow_back_ios_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
