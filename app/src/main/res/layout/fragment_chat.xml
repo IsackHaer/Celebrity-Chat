@@ -45,35 +45,29 @@
             android:id="@+id/chat_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/chat_message_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chat_actionbar"
+            app:layout_constraintTop_toBottomOf="@id/chat_toolbar"
+            app:reverseLayout="true"
             tools:listitem="@layout/message_me_item" />
 
-        <TextView
-            android:id="@+id/chat_actionbar"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:fontFamily="@font/bebas_neue"
-            android:textAlignment="center"
-            android:textSize="34sp"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/chat_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:navigationIcon="@drawable/round_arrow_back_ios_24"
+            app:titleTextAppearance="@style/bebas_neue_28sp"
+            app:title="Hello"
+            app:titleCentered="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="name of celebrity" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/chat_back_btn"
-            android:layout_width="40dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:backgroundTint="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="@+id/chat_actionbar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/chat_actionbar"
-            app:srcCompat="@drawable/round_arrow_back_ios_24" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

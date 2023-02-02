@@ -7,24 +7,37 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.celebritychat.R
+import com.example.celebritychat.data.model.Contact
+import com.example.celebritychat.data.model.Messages
 
 class MessageAdapter() : RecyclerView.Adapter<MessageAdapter.viewHolder>() {
 
-    private var dataset = mutableListOf<String>()
+    private var dataset = mutableListOf<Messages>()
 
-    inner class viewHolder(view: View): RecyclerView.ViewHolder(view){
+    inner class viewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val messageTv = view.findViewById<TextView>(R.id.message_tv)
-        val sendBtn = view.findViewById<ImageButton>(R.id.chat_send_btn)
     }
 
-    fun submitMessages(messages: MutableList<String>){
+    // companion objects decides which viewType should be inflated in the onCreateViewHolder
+    companion object {
+        const val ITEM_MESSAGE = 0
+        const val ITEM_ANSWER = 1
+    }
+
+    fun submitMessages(messages: MutableList<Messages>) {
         dataset = messages
-        notifyDataSetChanged()
+        notifyItemInserted(0)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
+        //depending on which viewType is choosen, it'll inflate the correct Layout
+        val layoutID = if (viewType == ITEM_MESSAGE) {
+            R.layout.message_me_item
+        } else {
+            R.layout.message_other_item
+        }
         val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.message_me_item, parent, false)
+            .inflate(layoutID, parent, false)
         return viewHolder(adapterLayout)
     }
 
@@ -34,10 +47,16 @@ class MessageAdapter() : RecyclerView.Adapter<MessageAdapter.viewHolder>() {
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         val message = dataset[position]
-
-        holder.messageTv.text = message
-
+        holder.messageTv.text = message.message
     }
 
-
+    //checks the dataset: Boolean and returns the correct companion object
+    override fun getItemViewType(position: Int): Int {
+        val message = dataset[position]
+        return if (message.answer) {
+            ITEM_ANSWER
+        } else {
+            ITEM_MESSAGE
+        }
+    }
 }

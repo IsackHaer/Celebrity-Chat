@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.celebritychat.MainViewModel
 import com.example.celebritychat.R
 import com.example.celebritychat.adapter.MessageAdapter
+import com.example.celebritychat.data.model.Contact
 import com.example.celebritychat.databinding.FragmentChatBinding
 
 class ChatFragment : Fragment() {
@@ -36,19 +37,21 @@ class ChatFragment : Fragment() {
         val messageAdapter = MessageAdapter()
         binding.chatRv.adapter = messageAdapter
 
-        viewModel.messages.observe(viewLifecycleOwner){
-            binding.chatActionbar.text = contact
-            messageAdapter.submitMessages(it)
+        binding.chatToolbar.title = contact
+        binding.chatToolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
         }
 
-        binding.chatBackBtn.setOnClickListener {
-            findNavController().navigate(ChatFragmentDirections.actionChatFragmentToHomeFragment())
+        viewModel.messages.observe(viewLifecycleOwner){
+            messageAdapter.submitMessages(it)
         }
 
         binding.chatSendBtn.setOnClickListener {
             val newMessage = binding.chatMessageEdit.text.toString()
-            viewModel.sendMessage(newMessage)
+            viewModel.sendMessage(newMessage, contact)
             binding.chatMessageEdit.text = null
         }
+
+
     }
 }

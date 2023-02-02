@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="bebas_neue_28sp">
+        <item name="android:fontFamily">@font/bebas_neue</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+</resources>

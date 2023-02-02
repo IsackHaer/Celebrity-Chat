@@ -19,11 +19,11 @@
         android:name="com.example.celebritychat.ui.ChatFragment"
         android:label="ChatFragment"
         tools:layout="@layout/fragment_chat">
-        <argument
-            android:name="contact"
-            app:argType="string" />
         <action
             android:id="@+id/action_chatFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="contact"
+            app:argType="string" />
     </fragment>
 </navigation>
