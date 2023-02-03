@@ -42,6 +42,14 @@ class ContactListAdapter() : RecyclerView.Adapter<ContactListAdapter.viewHolder>
         val contact = dataset[position]
         holder.image.setImageResource(contact.image)
         holder.name.text = contact.name
+
+        if (contact.chatHistory.isNotEmpty()){
+            if (contact.chatHistory.first().answer){
+                holder.lastMessage.text = "${contact.name}: ${contact.chatHistory.first().message}"
+            } else {
+                holder.lastMessage.text = "You: ${contact.chatHistory.first().message}"
+            }
+        }
         holder.clickableCv.setOnClickListener {
             holder.itemView.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToChatFragment(contact.name))
         }

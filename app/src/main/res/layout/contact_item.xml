@@ -9,6 +9,7 @@
         android:id="@+id/contact_clickable_cv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:backgroundTint="?attr/colorOnSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,9 +52,10 @@
                 android:id="@+id/view"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:background="@color/design_default_color_primary"
+                android:background="?attr/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/name_tv" />
 
             <TextView
                 android:id="@+id/name_tv"

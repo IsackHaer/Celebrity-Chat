@@ -15,7 +15,6 @@ create ViewModel: import Repository()
 
 
 
-//TODO recycler view messages are at the top, needs to be moved to the bottom
-//TODO last message needs to appear in the contact list
+
 //TODO send button should change color depending on if there is text or not in the textEdit
-//TODO make the celebrities answer back
+//TODO enable send button on the keyboard and change the keyboard design to message keyboard

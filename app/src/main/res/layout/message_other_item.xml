@@ -10,20 +10,42 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:backgroundTint="@color/material_dynamic_neutral80"
+        android:backgroundTint="?attr/colorPrimaryVariant"
         app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/message_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/bebas_neue"
-            android:maxWidth="300dp"
-            android:padding="10dp"
-            android:textSize="20sp"
-            tools:text="Hello friend, my name is kingston and I would like to assist you today." />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/message_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bebas_neue"
+                android:maxWidth="300dp"
+                android:paddingHorizontal="10dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Hello friend, my name is kingston and I would like to assist you today." />
+
+            <TextView
+                android:id="@+id/messageDate_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="3.2.2023. 14:00" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

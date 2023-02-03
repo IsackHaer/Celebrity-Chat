@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
 
     </data>
@@ -10,6 +9,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.5"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/chat_bg" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/chat_message_layout"
@@ -50,24 +61,72 @@
             app:layout_constraintBottom_toTopOf="@+id/chat_message_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chat_toolbar"
+            app:layout_constraintTop_toTopOf="parent"
             app:reverseLayout="true"
             tools:listitem="@layout/message_me_item" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/chat_toolbar"
+        <RelativeLayout
+            android:elevation="5dp"
+            android:background="?attr/colorPrimary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:navigationIcon="@drawable/round_arrow_back_ios_24"
-            app:titleTextAppearance="@style/bebas_neue_28sp"
-            app:title="Hello"
-            app:titleCentered="true"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="4dp"
+            android:alpha="0.95"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/chat_toolbar_backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@android:color/transparent"
+                android:src="@drawable/round_arrow_back_ios_24" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    app:cardCornerRadius="100dp"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/chat_toolbar_profile_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/emma" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/chat_toolbar_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="14sp"
+                    android:text="Emma" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/chat_toolbar_call_ibtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/round_call_24"
+                android:background="@android:color/transparent"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

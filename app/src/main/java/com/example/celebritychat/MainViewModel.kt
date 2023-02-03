@@ -26,11 +26,20 @@ class MainViewModel : ViewModel() {
         _contact.value = repository.loadContacts()
     }
 
+    fun loadImageResource(name: String?) : Int {
+        val image = _contact.value?.find { it.name == name }
+
+        if (image != null) {
+            return image.image
+        }
+        return 123
+    }
+
     fun loadMessages(name: String) {
         val contact = _contact.value?.find { it.name == name }
 
         if (contact != null) {
-            _messages.value = contact.messages
+            _messages.value = contact.chatHistory
         }
     }
 

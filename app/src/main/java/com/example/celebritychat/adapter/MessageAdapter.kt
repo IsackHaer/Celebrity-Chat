@@ -1,14 +1,16 @@
 package com.example.celebritychat.adapter
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.celebritychat.R
-import com.example.celebritychat.data.model.Contact
 import com.example.celebritychat.data.model.Messages
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class MessageAdapter() : RecyclerView.Adapter<MessageAdapter.viewHolder>() {
 
@@ -16,6 +18,7 @@ class MessageAdapter() : RecyclerView.Adapter<MessageAdapter.viewHolder>() {
 
     inner class viewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val messageTv = view.findViewById<TextView>(R.id.message_tv)
+        val messageDate = view.findViewById<TextView>(R.id.messageDate_tv)
     }
 
     // companion objects decides which viewType should be inflated in the onCreateViewHolder
@@ -45,9 +48,11 @@ class MessageAdapter() : RecyclerView.Adapter<MessageAdapter.viewHolder>() {
         return dataset.size
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         val message = dataset[position]
         holder.messageTv.text = message.message
+        holder.messageDate.text = getCurrentDateAndTime()
     }
 
     //checks the dataset: Boolean and returns the correct companion object
@@ -58,5 +63,14 @@ class MessageAdapter() : RecyclerView.Adapter<MessageAdapter.viewHolder>() {
         } else {
             ITEM_MESSAGE
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getCurrentDateAndTime(): String {
+        val date = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("dd-MM-yy HH:mm")
+        val formatted = date.format(formatter)
+
+        return formatted
     }
 }
